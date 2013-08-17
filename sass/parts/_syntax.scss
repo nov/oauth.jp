@@ -138,17 +138,21 @@ figure.code{
   .gist-file{
     margin: 0;
     .gist-data{
-      background: none;
-      border: none;
+      background: $color-gray05;
+      border: 1px solid $pre-border;
+      table {
+        border: none;
+        margin: 0;
+      }
       pre, .line-numbers, .line-data {
         line-height: 20px;
       }
-      pre{
+      pre, .line-data {
+        background: $color-gray05;
+      }
+      pre {
         font-family: $font-mono;
         text-align: left;
-      }
-      .line-data {
-        background: $color-gray05;
       }
     }
     .gist-meta{
