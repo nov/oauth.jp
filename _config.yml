@@ -2,11 +2,11 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
+url: http://oauth.jp
+title: OAuth.jp
 subtitle: A blogging framework for hackers.
-author: Your Name
-simple_search: http://google.com/search
+author: Nov Matake
+# simple_search: http://google.com/search
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
