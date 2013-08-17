@@ -73,7 +73,7 @@ twitter_user: oauthjp
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -90,7 +90,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: oauthjp
 disqus_show_comment_count: false
 
 # Google Analytics
@@ -98,4 +98,4 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_user: oauth.jp
-facebook_like: false
+facebook_like: true
