@@ -5,7 +5,7 @@ tags:
 - JustMigrate
 ---
 <p>おひさしぶりです、@novです。</p>
-<p>最近は、新しいFacebook iOS SDK使ってるアプリを見つけるとまず<a href="/blog/archives/20120208-ios-sdk">Token置換攻撃</a>を試みていますが、結構高い確率でこの攻撃に対して脆弱なアプリがみつかります。困ったものです。。</p>
+<p>最近は、新しいFacebook iOS SDK使ってるアプリを見つけるとまず<a href="/blog/2012/02/08/ios-sdk">Token置換攻撃</a>を試みていますが、結構高い確率でこの攻撃に対して脆弱なアプリがみつかります。困ったものです。。</p>
 <p>そんななか、2週間ほど前に、Micosoft Researchの人がIETF OAuth WGのメーリングリストに<a href="http://www.ietf.org/mail-archive/web/oauth/current/msg09270.html">同じ問題を提起していました</a>。該当Threadでは少し話題が脱線している部分もありますが、もともと最初にこの問題を提起したJohn BradleyがOAuth 2.0 CoreにSecurity Considerationsを追加する流れのようです。</p>
 <p>これが現状の改善につながれば良いのですが、そう簡単に行かないかもなとも思います。というのも、この問題、<strong>なかなかデベロッパーにとって理解されない</strong>傾向があります。</p>
 <p>そこで今日は、これまでいくつかのアプリデベロッパーに対して脆弱性報告をしたときの反応をまとめてみたいと思います。</p>

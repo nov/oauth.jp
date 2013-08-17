@@ -4,7 +4,7 @@ title: 'OAuth 2.0 & OpenID Connect @ Mashup Caravan & Meetup in Kyoto #MA7'
 tags:
 - JustMigrate
 ---
-<p><a href="/blog/archives/20110926-openid-foundation-japan-evangelist">OpenID Foundation Japan の Evangelist</a> としての初仕事で、Mashup Award #7 の Mashup Caravan &amp; Meetup in Kyoto というイベントで話してきました。</p>
+<p><a href="/blog/2011/09/26/openid-foundation-japan-evangelist">OpenID Foundation Japan の Evangelist</a> としての初仕事で、Mashup Award #7 の Mashup Caravan &amp; Meetup in Kyoto というイベントで話してきました。</p>
 <p>Mashup Award に参加する方々に向けて、20分で OAuth 2.0 と OpenID Connect の概要を話すということで、OAuth 2.0 は draft 10 に絞って、OpenID Connect は技術的な話を一切割愛してます。</p>
 <p>このスライドの最後のページにあるリンク集は、翻訳版の仕様とか僕のいままでのスライド一覧とかサンプルコードとかいろいろあるので、Mashup Award で OAuth 使う人は OAuth 1.0 / 2.0 関わらず参考にしていただければうれしいです。</p>
 <div style=""><strong style="display: block; margin: 12px 0 4px;"><a href="http://www.slideshare.net/matake/oauth-20-openid-connect" title="OAuth 2.0 &amp; OpenID Connect #MA7" target="_blank">OAuth 2.0 &amp; OpenID Connect #MA7</a></strong> <iframe scrolling="no" margin src="http://www.slideshare.net/slideshow/embed_code/9399934" frameborder="0"></iframe></div>

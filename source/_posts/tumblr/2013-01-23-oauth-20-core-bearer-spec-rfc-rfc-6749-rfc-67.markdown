@@ -4,7 +4,7 @@ title: OAuth 2.0 Core & Bearer Spec (RFC 6749 & RFC 6750) 翻訳公開！
 tags:
 - JustMigrate
 ---
-<p>ずいぶん前に「<a href="/blog/archives/20111129-oauth-20-core-bearer-spec-76993">OAuth 2.0 Core &amp; Bearer Spec 翻訳公開！</a>」で紹介したように、OAuth 2.0 Core &amp; Bearerは、OpenID Foundation Japanの翻訳WGで翻訳を公開していましたが、2012年に両specがRFC化されたのを受け、今回RFC版も翻訳しました。</p>
+<p>ずいぶん前に「<a href="/blog/2011/11/29/oauth-20-core-bearer-spec-76993">OAuth 2.0 Core &amp; Bearer Spec 翻訳公開！</a>」で紹介したように、OAuth 2.0 Core &amp; Bearerは、OpenID Foundation Japanの翻訳WGで翻訳を公開していましたが、2012年に両specがRFC化されたのを受け、今回RFC版も翻訳しました。</p>
 <ul><li><a href="http://openid-foundation-japan.github.com/rfc6749.ja.html">The OAuth 2.0 Authorization Framework (RFC 6749)</a></li>
 <li><a href="http://openid-foundation-japan.github.com/rfc6750.ja.html">The OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)</a></li>
 </ul><p>前回翻訳したdraft版から仕様自体に大きな変更はありませんが、特に</p>

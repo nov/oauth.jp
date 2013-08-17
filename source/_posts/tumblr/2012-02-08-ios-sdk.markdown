@@ -4,7 +4,7 @@ title: '"なんちゃら iOS SDK" でありそうな被害例'
 tags:
 - JustMigrate
 ---
-<p><a href="/blog/archives/20120207-oauth-20-implicit-flow">昨日の</a>続き。「ソーシャルゲームなんて3000万人の特殊な人しかやってない」という意見もあるようなので、今日は iOS アプリ版。</p>
+<p><a href="/blog/2012/02/07/oauth-20-implicit-flow">昨日の</a>続き。「ソーシャルゲームなんて3000万人の特殊な人しかやってない」という意見もあるようなので、今日は iOS アプリ版。</p>
 <h3>登場人物</h3>
 <ul><li>iOS SDK 出してるプラットフォーム</li>
 <li>iOS SDK と連携するプラットフォームの公式 iOS アプリ</li>
@@ -33,7 +33,7 @@ tags:
 <p>プラットフォームの iOS SDK は “response_type=token code” に対応する。</p>
 <p>被害アプリは、”response_type=token code” を使い、サーバーサイドへは access token ではなく authorization code を送る。(そしてサーバーサイドでは client authentication して code を token と交換する)</p>
 <p>ただいかんせんプラットフォーム側の iOS SDK が対応してくれなかったり、既にアプリを公開していて古いバージョンもサポートしなければならなかったりすることもあるので、そういう場合はバックエンドサーバーで対応。</p>
-<p>被害アプリのバックエンドサーバは、どうしてもアプリ側から access token を受け取らざるを得ないのであれば、<a href="/blog/archives/20120207-oauth-20-implicit-flow">昨日の記事</a>と同様に access token 発行先アプリが自身であることを確認する。</p>
+<p>被害アプリのバックエンドサーバは、どうしてもアプリ側から access token を受け取らざるを得ないのであれば、<a href="/blog/2012/02/07/oauth-20-implicit-flow">昨日の記事</a>と同様に access token 発行先アプリが自身であることを確認する。</p>
 <h3>追記</h3>
 <p>いくつか気になるtweetがあったので、載せときます。</p>
 <blockquote class="twitter-tweet">

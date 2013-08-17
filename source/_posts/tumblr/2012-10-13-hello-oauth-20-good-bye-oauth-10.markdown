@@ -9,7 +9,7 @@ tags:
 <p><a href="http://tools.ietf.org/html/rfc6749">RFC 6749 - The OAuth 2.0 Authorization Framework</a></p>
 <p><a href="http://tools.ietf.org/html/rfc6750">RFC 6750 - The OAuth 2.0 Authorization Framework: Bearer Token Usage</a></p>
 <p>このブログができたころには既にOAuth 2.0のdraftが出てたのですが、そういえばOAuth.jpっていつできたんだっけ？と思ってみて見ると…</p>
-<p><a href="/blog/archives/20100704-oauthjp">OAuth.jpを立ち上げました。 - OAuth.jp</a></p>
+<p><a href="/blog/2010/07/04/oauthjp">OAuth.jpを立ち上げました。 - OAuth.jp</a></p>
 <p>2010年7月！</p>
 <p>そんな長い間やってたのか。。</p>
 <p>FB Graph APIが出たのが2010年4月なので、OAuth 2.0の実装がでてからかれこれ2年半ほどでようやくRFCになった訳ですね。</p>
