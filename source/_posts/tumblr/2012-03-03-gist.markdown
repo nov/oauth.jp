@@ -1,0 +1,8 @@
+---
+layout: post
+title: gistもはれる。
+tags: 
+---
+<p>gistをはるときは、こうやる。</p>
+
+<div class="gists" data-gistline="true"><a href="https://gist.github.com/1965650.js">https://gist.github.com/1965650.js</a></div>

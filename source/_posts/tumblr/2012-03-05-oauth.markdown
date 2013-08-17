@@ -1,0 +1,13 @@
+---
+layout: post
+title: "代理アクセスを認可するOAuth仕様の進展        宮川 寧夫, 砂原 秀樹    \n\n公開日: 2012/02/26"
+tags: 
+---
+<blockquote><p>代理アクセスを認可するOAuth仕様の進展        宮川 寧夫, 砂原 秀樹    </p>
+
+<p>公開日: 2012/02/26</p></blockquote>&#8212;<p><a href="http://www.jstage.jst.go.jp/browse/jssst/29/1/_contents/-char/ja/">JSSST&#160;: Vol. 29 (2012) , No. 1</a></p>
+
+<p>by 宮川さん<br/>
+2012/3/31受付</p>
+
+<p>(via <a href="http://tkudo.tumblr.com/" class="tumblr_blog">tkudo</a>)</p>

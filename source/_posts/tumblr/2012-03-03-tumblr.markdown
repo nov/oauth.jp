@@ -1,0 +1,8 @@
+---
+layout: post
+title: Tumblrはじめました。
+tags: 
+---
+<p>Posterousがあまりにおそいので。</p>
+
+<p>とはいえ、OAuth.jpの過去記事URL変えるのもあれなんで、とりあえずt.oauth.jpでやってみます。</p>

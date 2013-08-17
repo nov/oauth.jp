@@ -1,0 +1,46 @@
+---
+layout: post
+title: '"なんちゃら iOS SDK" でありそうな被害例'
+tags:
+- JustMigrate
+---
+<p><a href="/blog/archives/20120207-oauth-20-implicit-flow">昨日の</a>続き。「ソーシャルゲームなんて3000万人の特殊な人しかやってない」という意見もあるようなので、今日は iOS アプリ版。</p>
+<h3>登場人物</h3>
+<ul><li>iOS SDK 出してるプラットフォーム</li>
+<li>iOS SDK と連携するプラットフォームの公式 iOS アプリ</li>
+<li>プラットフォーム上で “まっとうな” アプリを運営してる攻撃者</li>
+<li>攻撃者が自作した攻撃用アプリ</li>
+<li>iOS SDK 使って開発された被害アプリ</li>
+<li>あいかわらず無邪気な被害ユーザ</li>
+</ul><h3>前提</h3>
+<p>プラットフォームが提供する iOS SDK は、</p>
+<ol><li>プラットフォームが指定するカスタムスキーマ (ex. “xyz-connect://”) で始まる URI にアクセスすることで</li>
+<li>プラットフォーム公式 iOS アプリに access token 取得のフローを delegate し</li>
+<li>公式アプリが被害アプリの指定するカスタムスキーマ (ex. “foobar-rowial://”) で始まる URI にユーザーを戻すことで、アプリに access token を返す。</li>
+</ol><p>被害アプリは、</p>
+<ol><li>iOS SDK から受け取った access token を自身のバックエンドサーバに送り</li>
+<li>バックエンドサーバはプラットフォームが提供する Profile API (GET /me とか) にアクセスして</li>
+<li>レスポンスに含まれる user_id をもとにユーザを認証する。</li>
+</ol><h3>シナリオ</h3>
+<ol><li>攻撃者はプラットフォームが指定するのと同じカスタムスキーマで delegate を受け取る攻撃用アプリを自作する (なり誰かから買うなり..)</li>
+<li>攻撃者は自分の iPhone/iPad に攻撃用アプリをインストール (xcode 経由だと、Apple の承認必要ないんですよね、たしか？)</li>
+<li>攻撃者は自分が運営する “まっとうな” なアプリの DB から被害ユーザのアクセストークンを取って来て攻撃用アプリに埋め込む</li>
+<li>攻撃者は被害アプリを起動して “なんちゃら ID でログイン” とかいうボタンを押す</li>
+<li>被害アプリはプラットフォーム攻撃者が自作した攻撃用アプリに delegate 開始</li>
+<li>攻撃用アプリは被害ユーザのアクセストークンを被害アプリに返す</li>
+<li>攻撃者は被害ユーザのアカウントで被害アプリを使う</li>
+</ol><h3>対策方法</h3>
+<p>プラットフォームの iOS SDK は “response_type=token code” に対応する。</p>
+<p>被害アプリは、”response_type=token code” を使い、サーバーサイドへは access token ではなく authorization code を送る。(そしてサーバーサイドでは client authentication して code を token と交換する)</p>
+<p>ただいかんせんプラットフォーム側の iOS SDK が対応してくれなかったり、既にアプリを公開していて古いバージョンもサポートしなければならなかったりすることもあるので、そういう場合はバックエンドサーバーで対応。</p>
+<p>被害アプリのバックエンドサーバは、どうしてもアプリ側から access token を受け取らざるを得ないのであれば、<a href="/blog/archives/20120207-oauth-20-implicit-flow">昨日の記事</a>と同様に access token 発行先アプリが自身であることを確認する。</p>
+<h3>追記</h3>
+<p>いくつか気になるtweetがあったので、載せときます。</p>
+<blockquote class="twitter-tweet">
+<p>@<a href="https://twitter.com/7032">7032</a> 「そもそもそれ認証関係お任せライブラリでは無いから、勘違いするとこういう目にあうよ。」という話です。</p>
+<div><a href="https://twitter.com/oauthjp/status/167406152261443584">February 9, 2012</a></div>
+</blockquote>
+<blockquote class="twitter-tweet">
+<p>@<a href="https://twitter.com/7032">7032</a> コンポーネントというのがiOS SDKのことを指してるなら、それはちゃんと認可リクエストも送ってるしそのレスポンスも受け取ってるので、OAuthの仕様の範囲内では正常に動作しています。受け取ったトークンが、そもそも認証のために使えるものである保証が無いというだけです。</p>
+<div><a href="https://twitter.com/oauthjp/status/167439399196426240">February 9, 2012</a></div>
+</blockquote>

@@ -1,0 +1,17 @@
+---
+layout: post
+title: OAuth.jpで何をする？
+tags:
+- JustMigrate
+---
+<p>さて、ドメインが開いていたという安易なきっかけでスタートしたOAuth.jp、当然具体的に何をするかなんて決まってません。</p>
+<p>ただ、以前からOpenIDコミュニティにおける<a href="http://openid.or.jp">OpenID Foundation Japan</a>のように、OAuthにも日本国内で何かしら組織なりグループなりがあるといいなぁとは思っていて、OAuth.jpがそういう場になればなぁと漠然と思っています。</p>
+
+<p>ということで、まずは僕が考えている方針をまとめてみます。 いまのところ質問は来ていませんが、日本語でOAuthに関する質問ができる場としてはちょっと前に<a href="http://groups.google.co.jp/group/oauth-japan">OAuth Japan</a>というGoogleグループを作りました。また<a href="/blog/archives/20100704-githuborganization">直前の記事</a>で紹介したように、Githubには<a href="http://github.com/oauthjp">OAuth.jpのOrganizationアカウント</a>も用意しています。</p>
+
+<p>そして、有志のContributorが主体になってOAuth関連の記事をアップしていける場がこのサイトなのかなぁと思っています。</p>
+<p>ということで、質問はGoogleグループ、情報発信はこのブログ、そして必要があればGithubにコードをあげる、という感じで進めて行けばいいのかなぁ？</p>
+<p>いろいろご意見ご要望いただけるとうれしいです。</p>
+<p>ps. ちなみに、Contributorにならなくても、<a href="mailto:post@oauthjp.posterous.com">post@oauthjp.posterous.com</a>にメールすれば誰でもこのブログに記事を書けます。メール経由のみ、かつ承認制という制限はありますが。この記事もメールで書いてます。</p>
+
+<p>追記: 2013年のposterousサービス終了に伴い、サイトをTumblrに移行しました。Contributeの方法もかわっていますので、ご了承ください。</p>

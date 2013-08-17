@@ -1,0 +1,10 @@
+---
+layout: post
+title: OAuth.jpを立ち上げました
+tags:
+- JustMigrate
+---
+
+日本のWeb Developer向けに、OAuthに関する情報を発信するコミュニティブログのような存在にしていきたいと思っています。
+
+ご協力いただける方を大募集中！ぜひinfo@oauth.jpか@oauthjp宛にご連絡くださいm_ _m

@@ -1,0 +1,11 @@
+---
+layout: post
+title: はてなのOAuthをさっそく使ってみました
+tags:
+- JustMigrate
+---
+<p>こんばんは、ritouです。 </p> はてなのOAuthですが、OAuth 1.0aに対応しているようです。 <br/>アプリケーション登録から動作確認まで試してみましたので、他の開発者のみな <br/>さんも是非トライしてみてはいかがでしょうか？ <p></p> はてなのAPIがOAuth対応したというので、早速試してみた！ <br/><a href="http://d.hatena.ne.jp/ritou/20101215/1292347014"><a href="http://d.hatena.ne.jp/ritou/20101215/1292347014">http://d.hatena.ne.jp/ritou/20101215/1292347014</a></a>
+
+<p>追記 (by @nov)</p>
+<p>Hatena OAuth Ruby Sample</p>
+<p><a href="https://gist.github.com/741666"><a href="https://gist.github.com/741666">https://gist.github.com/741666</a></a></p>

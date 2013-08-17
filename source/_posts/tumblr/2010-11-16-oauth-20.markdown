@@ -1,0 +1,16 @@
+---
+layout: post
+title: OAuth 2.0の仕様書を翻訳しました
+tags:
+- JustMigrate
+---
+<p><a href="http://www.openid.or.jp/">OpenID Foundation Japan</a>の<a href="http://openid-foundation-japan.github.com/">翻訳・教育ワーキンググループ</a>を中心とした有志10名で、<a href="http://tools.ietf.org/html/draft-ietf-oauth-v2-10">The OAuth 2.0 Protocol draft v.10</a>を翻訳しました。</p>
+<p><span style="font-size: medium;"><strong><a href="http://openid-foundation-japan.github.com/draft-ietf-oauth-v2.ja.html">The OAuth 2.0 Protocol (翻訳版)</a></strong></span></p>
+<p>まだOAuth 2.0は仕様策定中なので、対象の原文はdraft v.10です。</p>
+<p>mixiもfacebookもOAuth 2.0のdraft 10をサポートしているので、DeveloperがOAuth 2.0対応のAPIを使う際には、このdraft v.10を使うことになるでしょう。</p>
+<p>この翻訳によって、日本のDeveloperのみなさんにOAuthがより身近になればと思います。</p>
+
+<p>原文は今後draft v.11-13を経てFinalになるという噂ですが、v.11の公開を前に、仕様書の分割や採用する署名方式に関する議論が長引いているようです。今月中にv.11が出てくることを祈りましょう。</p>
+<p>翻訳版は、国内外でのOAuth Serverの実装状況なども考慮し、今後もアップデートをしていく予定です。</p>
+<p>4月に公開したOAuth 1.0の翻訳版も<a href="http://tools.ietf.org/html/draft-hammer-oauth-10">OAuth 1.0 draft v.10</a>が対象なので、早く<a href="http://tools.ietf.org/html/rfc5849">RFC版</a>との<a href="http://tools.ietf.org/rfcdiff?url2=rfc5849">diff</a>も反映しなきゃですね。</p>
+<p><span style="font-size: medium;"><strong><a href="http://openid-foundation-japan.github.com/draft-hammer-oauth-10.html">The OAuth 1.0 Protocol (翻訳版)</a></strong></span></p>

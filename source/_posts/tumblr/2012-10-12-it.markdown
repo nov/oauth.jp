@@ -1,0 +1,14 @@
+---
+layout: post
+title: '@IT連載 - デジタル・アイデンティティ技術最新動向'
+tags: 
+---
+<p><a href="http://kyomichi.tumblr.com/post/33428806421/it" class="tumblr_blog">kyomichi</a>:</p>
+
+<blockquote><p>第1回 <a href="http://www.atmarkit.co.jp/fsecurity/rensai/digid01/01.html">「OAuth」の基本動作を知る</a></p>
+
+<p>第2回 <a href="http://www.atmarkit.co.jp/ait/articles/1209/10/news105.html">RFCとなった「OAuth 2.0」――その要点は？</a></p>
+
+<p>第3回 <a href="http://www.atmarkit.co.jp/ait/articles/1209/20/news140.html">OpenIDが果たす役割を知る</a></p>
+
+<p>第4回 <a href="http://www.atmarkit.co.jp/ait/articles/1209/27/news138.html">「OpenID Connect」を理解する</a></p></blockquote>

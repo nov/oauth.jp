@@ -1,0 +1,6 @@
+---
+layout: post
+title: モバイルアプリを書いているプログラマはデバイスとサーバ間のコミュニケーションの、とくに確認/認証の部分を管理するやり方を知らない
+tags: 
+---
+<blockquote>モバイルアプリを書いているプログラマはデバイスとサーバ間のコミュニケーションの、とくに確認/認証の部分を管理するやり方を知らない</blockquote>&#8212;<a href="http://jp.techcrunch.com/archives/20120221to-lock-down-mobile-apps-cenzic-launches-new-app-testing-tools/">モバイルプログラマはセキュリティにルーズ–Cenzicがアプリ試験ツールを立ち上げ</a> (via <a href="http://kyomichi.tumblr.com/" class="tumblr_blog">kyomichi</a>)
