@@ -24,6 +24,8 @@ Google Apps とか導入してたら、OAuth 2.0 とか G+ Sign-in (= OpenID Con
 
 と、Octopress に移行して断然ブログ書きやすくなったので、つらつら書いてみました。
 
+<!-- more -->
+
 == 以下ステマ ==
 
 ん？「エンプラで OAuth 2.0」ってのに興味湧きました？
