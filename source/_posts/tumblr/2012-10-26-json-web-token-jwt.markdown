@@ -15,6 +15,7 @@ tags:
 <li><a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-signature-06">JSON Web Signature (JWS, draft 06)</a></li>
 <li><a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-06">JSON Web Encryption (JWE, draft 06)</a></li>
 </ul><p>JWEはまだ実際に使うケースが無いので、ここでは説明しない。</p>
+<p><b><i>追記:</i></b><br><i>draft versionが違いますが、<a href="http://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html">JWT仕様翻訳版</a>と<a href="http://openid-foundation-japan.github.io/draft-ietf-jose-json-web-signature-14.ja.html">JWS仕様翻訳版</a>もご参考に。</i></p>
 <h3>Signed JWT</h3>
 <p>JWS使ってSignatureつけられたJWT。</p>
 <p>HeaderとPayloadとSignatureという3つのセグメントから構成される。</p>
@@ -22,6 +23,7 @@ tags:
 <p>Payloadは実際に送信したいJSONデータそのものを、URL-safe Base64 Encodingした文字列。</p>
 <p>Signatureは、HeaderとPayloadを &#8220;.&#8221; で連結した文字列に対して、Headerに指定されたアルゴリズムで署名をして、その署名をURL-safe Base64 Encodingした文字列。</p>
 <p>サンプルは<a href="http://tools.ietf.org/html/draft-ietf-oauth-json-web-token-04#section-3.1">JWT Spec Section 3.1</a> (draft 04の場合) を読むこと。</p>
+<p><b><i>追記:</i></b><br><i>draft versionが違いますが、<a href="http://openid-foundation-japan.github.io/draft-ietf-oauth-json-web-token-11.ja.html#ExampleJWT">JWT仕様の翻訳版の該当箇所はこちら</a>。</i></p>
 <h3>Signature Algorithms</h3>
 <p>サポートされているアルゴリズムは、これまた別仕様のJSON Web Algorithm (JWA) で規定されている。</p>
 <ul><li><a href="http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-06">JSON Web Algorithm (JWA, draft 06)</a></li>
