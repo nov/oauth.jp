@@ -1,0 +1,18 @@
+---
+layout: post
+title: Ruby & PHP の JOSE 実装で JWE draft v17 に追いつきました
+date: 2013-10-25 16:34
+comments: true
+categories: 
+---
+
+@nov です。
+
+JWE はまだまだ変わりそうな気がしてしばらく最新仕様への追随を怠っていたのですが、先日[こんな pull request](https://github.com/nov/json-jwt/issues/14) をいただいたので、以下の2つのライブラリの JWE 実装を、JWE draft v17 に追随させました。
+
+* [Ruby json-jwt gem](https://github.com/nov/json-jwt)
+* [PHP JOSE](https://github.com/nov/jose-php)
+
+ところでその pull request 内でのやり取りで知ったのですが、Xbox One ってのが JWE を使ってるらしいですね。
+
+他にも Production で JWE 使ってるとことかあるんでしょうか？
