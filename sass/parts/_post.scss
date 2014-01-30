@@ -4,6 +4,15 @@
 			margin-left: 0;
 		}
 	}
+	.entry-content {
+		h3 {
+			margin-top: 50px;
+			border-bottom: dotted 1px #ccc;
+		}
+		strong {
+			font-size: 1.2em;
+		}
+	}
 	.meta{
 		line-height: 2;
 		font-size: 0.7em;
