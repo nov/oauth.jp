@@ -56,6 +56,12 @@ Y!J の OpenID Connect も大丈夫、なんじゃないかな。これは Y!J D
 
 他に何があったっけ...
 
+[追記]
+
+* Y!J の OAuth 2.0 & OpenID Connect 実装は redirect_uri 完全一致必須でした。
+* mixi の OAuth 2.0 実装は Implicit Flow サポートしてませんでした。
+* 楽天の OAuth 2.0 実装も Implicit Flow サポートしてませんでした。
+
 ### 攻撃パターン
 
 攻撃者は、redirect_uri を Client 上に存在する open redirector の endpoint に書き換えたリンクを被害者に踏ませます。
