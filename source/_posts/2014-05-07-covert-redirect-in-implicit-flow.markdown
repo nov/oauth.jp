@@ -26,7 +26,7 @@ fragment は server-side には送られないけど、クライアントサイ�
 
 試しに http://www.idcon.org/#foobar にアクセスすると、http://idcon.org/#foobar にリダイレクトされるかと思います。
 
-www.idcon.org のサーバーには **#foobar** の部分は送られませんが、http://idcon.org/ に load される client-side の JS からは、#foobar** にアクセスできます。
+www.idcon.org のサーバーには **#foobar** の部分は送られませんが、http://idcon.org/ に load される client-side の JS からは、**#foobar** にアクセスできます。
 
 なので、Covert Redirect のケースでも、open redirector をつかって最終的に被害者がリダイレクトしてくる endpoint に攻撃者が JS を仕込んでそれを自分のサーバーにでも送るようにしておけば、**access token が漏洩します**。
 
