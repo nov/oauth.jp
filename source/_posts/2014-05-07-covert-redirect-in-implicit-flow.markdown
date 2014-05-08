@@ -36,9 +36,11 @@ GREE のサーバーには **#foobar** の部分は送られませんが、games
 
 ### 仕様のバグではないが...
 
-[宮川さんが記事](http://weblog.bulknews.net/post/85008516879/covert-redirect-vulnerability-with-oauth-2)にもあるように、[RFC6819 - OAuth 2.0 Threat Model and Security Considerations](http://tools.ietf.org/html/rfc6819) の Section 4.2.4, 5.2.3.5 あたりにはこの問題が指摘されています。([RFC6819 翻訳版はこちら](http://openid-foundation-japan.github.io/rfc6819.ja.html#implicit_flow))
+[宮川さんが記事](http://weblog.bulknews.net/post/85008516879/covert-redirect-vulnerability-with-oauth-2)にもあるように、[RFC6819 - OAuth 2.0 Threat Model and Security Considerations](http://tools.ietf.org/html/rfc6819) の [Section 4.2.4](http://tools.ietf.org/html/rfc6819#section-4.2.4), [Section 5.2.3.5](http://tools.ietf.org/html/rfc6819#section-5.2.3.5) あたりにはこの問題が指摘されています。([RFC6819 翻訳版はこちら](http://openid-foundation-japan.github.io/rfc6819.ja.html))
 
-OpenID Connect では、**そもそも redirect_uri の部分一致を認めていません**。([Core](http://openid.net/specs/openid-connect-core-1_0.html) Section 3.2.2.1 参照, [日本語版はこちら](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html))
+また [RFC6749 - The OAuth 2.0 Authorization Framework](http://tools.ietf.org/html/rfc6749) の [Section 3.2.2.1](http://tools.ietf.org/html/rfc6749#section-3.1.2.2) では redirect_uri の**部分一致は query にしか**認められていません。domain のみのマッチングや path の一部のみの一致で OK にしてしまうのは、実装上のバグと言えるでしょう。([RFC6749 翻訳版はこちら](http://openid-foundation-japan.github.io/rfc6749.ja.html))
+
+OpenID Connect では、query も含めて **redirect_uri の部分一致を認めていません**。([OpenID Connect Core Section 3.2.2.1](http://openid.net/specs/openid-connect-core-1_0.html#ImplicitAuthRequest) 参照, [日本語版はこちら](http://openid-foundation-japan.github.io/openid-connect-core-1_0.ja.html#ImplicitAuthRequest))
 
 OAuth 1.0 では Refresh Token Secret が漏れない限り Access Token が Covert Redirect 経由で漏洩することは無いですし、OpenID 2.0 でも RP Discovery というのをきちんとやっていれば、redirect_uri の exact match 相当のことができます。
 
@@ -50,17 +52,11 @@ OAuth 1.0 では Refresh Token Secret が漏れない限り Access Token が Cov
 
 いや、Google の Connect 実装は exact match ですよ。でも元記事見る限り、Google のは OpenID 2.0 実装が問題にされてますね。
 
-Y!J の OpenID Connect も大丈夫、なんじゃないかな。これは Y!J Developers Blog に期待するとして、Y!J も OpenID 2.0 実装の方は...あやしいな...
+Y!J の OpenID Connect も redirect_uri の部分一致は認められていないので、大丈夫です。
 
-他の OpenID Connect 実装は...元々 OAuth 2.0 実装済やったとこが後から OpenID Connect 対応したよ！とか言ってきたケースとかは...あやしいかもしれませんね...
+mixi と楽天の OAuth 2.0 実装は、そもそも Implicit Flow サポートしてません。
 
-他に何があったっけ...
-
-[追記]
-
-* Y!J の OAuth 2.0 & OpenID Connect 実装は redirect_uri 完全一致必須でした。
-* mixi の OAuth 2.0 実装は Implicit Flow サポートしてませんでした。
-* 楽天の OAuth 2.0 実装も Implicit Flow サポートしてませんでした。
+OpenID 2.0 実装に関しては...[別記事にまとめました](/blog/2014/05/08/covert-redirect-and-openid-2-dot-0)。
 
 ### 攻撃パターン
 
