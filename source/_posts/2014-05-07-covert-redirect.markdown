@@ -12,7 +12,7 @@ categories:
 
 細かく訂正いれてると分けわかんなくなってきたんで、[新しい記事書きました](/blog/2014/05/07/covert-redirect-in-implicit-flow/)。
 
-<s>ゴールデンウィークまっただなかに Twitter で海外の ID 厨から袋だたきにあってたので、もうこの問題は片付いただろうとすっかり油断してた「Covert Redirect」の件ですが、日本でもゴールデンウィーク明けてバズりだしたので、一旦問題を整理した方がよさそうですね。
+ゴールデンウィークまっただなかに Twitter で海外の ID 厨から袋だたきにあってたので、もうこの問題は片付いただろうとすっかり油断してた「Covert Redirect」の件ですが、日本でもゴールデンウィーク明けてバズりだしたので、一旦問題を整理した方がよさそうですね。
 
 ### 事の発端
 
@@ -32,11 +32,11 @@ OAuth 2.0 では、まず Client が End-User の UserAgent を Server の Autho
 
 OAuth 愛好家の間で "OAuth Dance" なんて呼ばれてるアレですね。
 
-で、今回の話は、その **"OAuth Dance" 中の話** です。</s>
+で、今回の話は、その **"OAuth Dance" 中の話** です。
 
 <!-- more -->
 
-<s>### Covert Redirect てなんだ？
+### Covert Redirect てなんだ？
 
 Server 側の同意画面で同意ボタンを押すと、Client にリダイレクトして戻って来る。
 
@@ -70,7 +70,7 @@ Server 側では、一度部分一致を許した実装が広く世の中につ�
 
 ### で、どれくらいヤバいの？
 
-実際の影響については、OpenID Connect の仕様策定者の一人でもある [John Bradley さんが記事書いてる](http://www.thread-safe.com/2014/05/covert-redirect-and-its-real-impact-on.html)ので、まぁそれを読んでください。
+<s>実際の影響については、OpenID Connect の仕様策定者の一人でもある [John Bradley さんが記事書いてる](http://www.thread-safe.com/2014/05/covert-redirect-and-its-real-impact-on.html)ので、まぁそれを読んでください。
 
 ほんとはちゃんとこれ訳そうと思ったんですが、[OpenID Foundation Japan から翻訳版](http://www.openid.or.jp/blog/2014/05/covert-redirect-and-its-real-impact-on-oauth-and-openid-connect.html)まで出たので、もういんじゃね？って空気を感じています。
 
@@ -82,7 +82,7 @@ Server 側では、一度部分一致を許した実装が広く世の中につ�
 
 *え？？漏れないの？？発見でもないの？？*
 
-*シンガポールウソばっかなの？？*
+*シンガポールウソばっかなの？？*</s>
 
 ### ちょっとヤバいかも (?) なケース
 
@@ -98,7 +98,7 @@ http://d.hatena.ne.jp/ritou/20121008/1349695124
 
 ### 結論
 
-Covert Redirect によって **access token 漏れるとか、そんな心配は無い**。
+<s>Covert Redirect によって **access token 漏れるとか、そんな心配は無い**。</s>
 
 ただし悪用される open redirector の実装によっては、**code は漏れることもあり得る**。
 
@@ -112,4 +112,4 @@ code が漏れて CSRF に脆弱な Client と組合わさると、被害者の 
 
 以上、仕事に戻ります (>_<)>
 
-*ほんとゴールデンウィーク明け初日から...*</s>
+*ほんとゴールデンウィーク明け初日から...*
