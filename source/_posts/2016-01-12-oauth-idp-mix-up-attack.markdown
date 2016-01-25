@@ -33,6 +33,8 @@ categories:
 6. code/tokenを受け取ったRPは、state値を元に受け取ったAuthorization ResponseがAIdPからのものだと判断する。
 7. RPはAIdPのToken EndpointやAPI Endpointにcodeやtokenを送りつけてしまい、HIdPのcodeやtokenがAIdP (攻撃者) の手に渡る。
 
+<!-- more -->
+
 ## 対策方法
 
 ### 対策方法1
