@@ -12,9 +12,9 @@ categories:
 
 通常であればにいさんと呼びたいところですが、今回新たな MVP も産んだことですし、Identity 業界の慣習にならって積極的にパパ呼ばわりしていきたいとおもいます。
 
-また、Award のカテゴリーは "Enterprise Mobility" ってなってたので、[ふぁらおぅにぃさん](http://idmlab.eidentity.jp)が本当のにぃさんになった感じですよね、きっと。(年齢的な意味ではなく)
+また、Award のカテゴリーは "Microsoft Azure" ってなってたので、[ふぁらおぅにぃさん](http://idmlab.eidentity.jp)が腹ちがいのにぃさんになった感じですかね、きっと。
 
-AzureAD & ADFS の Connect サポート、Graph API、Windows 10 の FIDO サポートあたりが興味あるとこなんで、その辺りでいろいろ遊びながらこのブログとかで記事書いていければいいなと思います。
+どこまで今回の MVP Award のカテゴリーにマッチしてるのかはよくわかってないんですが、個人的に興味あるエリアは AzureAD & ADFS の Connect サポート、Graph API、Windows 10 の FIDO サポートあたりなんで、その辺りでいろいろ遊びながらこのブログとかで記事書いていければいいなと思います。
 
 [Visual Studio Code](https://code.visualstudio.com/) で。(まじこいつ起動はえー！Atom より圧倒的に起動はえー！！)
 
