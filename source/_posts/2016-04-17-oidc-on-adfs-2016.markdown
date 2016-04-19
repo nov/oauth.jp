@@ -1,0 +1,245 @@
+---
+layout: post
+title: "Windows Server 2016 版 ADFS を触ってみた"
+date: 2016-04-17 19:38
+comments: true
+categories:
+---
+
+MVP になったことですし、早速 Azure 常に Windows Server 2016 の VM 立ち上げて、次期バージョンの ADFS を動かしてみました。
+
+想定ユースケースは、Native App とその Backend Server があって、Backend Server が Native App 向けに提供している API 用の Access Token も、ADFS が発行するというものです。
+
+まさしく今後エンプラで増えていくであろうパターンですね。
+
+## Setup Hybrid Client on ADFS
+
+ADFS Manager に "Application Groups" っていう設定が増えてるんで、そこから "Native Application and Web API" ってのを選択して、Connect RP (= OAuth Client) を登録します。
+
+![New Hybrid Client](/images/posts/adfs/hybrid-client-new.png)
+
+スクショいっぱい撮るのが面倒なのですっ飛ばしますが、こんな感じで Native App とその Backend Server を ADFS に "Application Group" として登録しました。
+
+![Registered Hybrid Client](/images/posts/adfs/hybrid-client.png)
+
+ちなみに、この時 Backend には特に Native App と別の client_id が発行されたりはしません。
+
+ここまでで、ADFS 側の準備は完了です。以降、[こちらの gist](https://gist.github.com/nov/3f284aa8cec5ed6bc332e9a5c9d93851) に沿って、Step by Step で見ていきます。
+
+<!-- more -->
+
+## GET /.well-known/openid-configuration
+
+まずは ADFS の OpenID Configuration を取得しましょう。
+
+あいにく ADFS の Webfinger は[まともに動いてる気配がしない](https://gist.github.com/nov/577c25a1ece53bc97d962d5e74c06496)ので、issuer は `https://<your-adfs-domain>/adfs` をハードコードします。
+
+```ruby
+config = OpenIDConnect::Discovery::Provider::Config.discover!(
+  'https://sts.example.com/adfs'
+) # GET https://sts.example.com/adfs/.well-known/openid-configuration
+```
+
+すると、こんな JSON が返ってきます。
+
+```json
+{
+  "issuer": "https://sts.example.com/adfs",
+  "authorization_endpoint": "https://sts.example.com/adfs/oauth2/authorize/",
+  "token_endpoint": "https://sts.example.com/adfs/oauth2/token/",
+  "jwks_uri": "https://sts.example.com/adfs/discovery/keys",
+  "token_endpoint_auth_methods_supported": [
+    "client_secret_post",
+    "client_secret_basic",
+    "private_key_jwt",
+    "windows_client_authentication"
+  ],
+  "response_types_supported": [
+    "code",
+    "id_token",
+    "code id_token",
+    "token id_token"
+  ],
+  "response_modes_supported": [
+    "query",
+    "fragment",
+    "form_post"
+  ],
+  "grant_types_supported": [
+    "authorization_code",
+    "refresh_token",
+    "client_credentials",
+    "urn:ietf:params:oauth:grant-type:jwt-bearer",
+    "implicit",
+    "password",
+    "srv_challenge"
+  ],
+  "subject_types_supported": ["pairwise"],
+  "scopes_supported": [
+    "aza",
+    "vpn_cert",
+    "user_impersonation",
+    "openid",
+    "profile",
+    "admin-only",
+    "email",
+    "logon_cert"
+  ],
+  "id_token_signing_alg_values_supported": ["RS256"],
+  "token_endpoint_auth_signing_alg_values_supported": ["RS256"],
+  "access_token_issuer": "http://sts.example.com/adfs/services/trust",
+  "claims_supported": [
+    "aud",
+    "iss",
+    "iat",
+    "exp",
+    "auth_time",
+    "nonce",
+    "at_hash",
+    "c_hash",
+    "sub",
+    "upn",
+    "unique_name",
+    "pwd_url",
+    "pwd_exp"
+  ],
+  "microsoft_multi_refresh_token": true,
+  "userinfo_endpoint": "https://sts.example.com/adfs/userinfo"
+}
+```
+
+`response_types_supported` 見る限り、`code token` とか `code token id_token` はサポートされてないですね。なんででしょうね？
+
+まぁ、気にせず進みましょう。
+
+## GET /oauth2/authorize
+
+取得した OP Config をもとに、Authorization Request を発行します。
+
+```ruby
+client = OpenIDConnect::Client.new(
+  identifier: '2940bc16-983c-41ca-b373-4c6045278627', # Native App's client_id
+  redirect_uri: 'custom-schema://foobar',
+  authorization_endpoint: config.authorization_endpoint,
+  token_endpoint: config.token_endpoint,
+  userinfo_endpoint: config.userinfo_endpoint
+)
+
+authorization_uri = client.authorization_uri(
+  scope: [:openid, :email, :profile]
+)
+# => https://sts.example.com/adfs/oauth2/authorize/?
+#            client_id=2940bc16-983c-41ca-b373-4c6045278627&
+#            redirect_uri=custom-schema%3A%2F%2Ffoobar&
+#            response_type=code&
+#            scope=openid+email+profile
+```
+
+この URL をブラウザで開くと、ADFS のログイン画面が表示されて、ログインしたら特に同意画面とかはなく `custom-schema://foobar` にリダイレクトして戻ってきます。
+
+リダイレクト URL の Query には code がついてるので、そいつコピーします。
+
+## GET /oauth2/token
+
+取得した code を使って、Access Token を取得します。
+
+今回は Native App 向けに `response_type=code` を指定してるので、client_secret なしで Access Token が取得できます。(ID Token も同時に発行されます)
+
+```ruby
+client.authorization_code = code
+token = client.access_token!
+```
+
+取得した Access Token は JWT になっているので、Payload を見てみましょう。`aud` が `urn:microsoft:userinfo` になっています。
+あと、Authorization Request では `openid email profile` を指定したはずなのに、ここでは `scp` (scopes) が `openid` だけになってますね。
+
+```json
+{
+  "aud": "urn:microsoft:userinfo",
+  "iss": "http://sts.example.com/adfs/services/trust",
+  "iat": 1460887152,
+  "exp": 1460890752,
+  "apptype": "Public",
+  "appid": "2940bc16-983c-41ca-b373-4c6045278627",
+  "authmethod": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
+  "auth_time": "2016-04-17T09:37:20.197Z",
+  "ver": "1.0",
+  "scp": "openid",
+  "sub": "BsG1N+rcilM2dnBDB7kyha6YglKD3d9qcwbCixQEGlQ="
+}
+```
+
+## GET /userinfo
+
+では UserInfo を取得します。
+
+```ruby
+token.userinfo!
+```
+
+`email profile` の両 scope がどこかにいってしまったので、案の定 `sub` しか返ってきませんね。
+
+```json
+{
+  "sub": "BsG1N+rcilM2dnBDB7kyha6YglKD3d9qcwbCixQEGlQ="
+}
+```
+
+`sub` だけなら Access Token にも入ってたし、UserInfo Endpoint いらねんじゃね？とか思いますが、まぁ Windows Server 2016 リリース時にはなんか変わってるかもですね。
+
+## GET /oauth2/token (for Backend API)
+
+さて、ここまでは普通の OpenID Connect / OAuth2 のフローでしたが、いよいよ Native App の Backend API 用の Access Token を取得します。
+
+先ほど Access Token & ID Token を取得した際に、Refresh Token も取得していたので、この Refresh Token を使って `resource` パラメータに ADFS に登録しておいた Backend API の Identifer を指定します。
+
+```ruby
+client.refresh_token = token.refresh_token
+token2 = client.access_token!(
+  resource: 'http://backend.dev'
+)
+```
+
+すると、また JWT-formatted な Access Token が発行されるので、Payload を確認します。
+
+`aud` が `http://backend.dev` に変わっていますね。
+
+```json
+{
+  "aud": "http://backend.dev",
+  "iss": "http://sts.example.com/adfs/services/trust",
+  "iat": 1460886940,
+  "exp": 1460890540,
+  "apptype": "Public",
+  "appid": "2940bc16-983c-41ca-b373-4c6045278627",
+  "authmethod": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
+  "auth_time": "2016-04-17T09:37:20.197Z",
+  "ver": "1.0"
+}
+```
+
+## Backend API Access
+
+あとは、Backend API 側では `iss=http://sts.example.com/adfs/services/trust` かつ `aud=http://backend.dev` な Access Token を受け入れるだけですね。
+
+Backend API 側では、OP Config の `jwks_uri` から JWT の署名検証用の公開鍵 (JWK-formatted) を取得して、Access Token の署名を検証するのを忘れずに。
+
+```json
+// https://sts.example.com/adfs/discovery/keys
+{
+  "keys": [{
+    "kty": "RSA",
+    "use": "sig",
+    "alg": "RS256",
+    "kid": "B1B8yZ-HAp7g2iz8D6LO3X2gOeI",
+    "x5t": "B1B8yZ-HAp7g2iz8D6LO3X2gOeI",
+    "n": "1ag4fTO65qrnmUENL4K4ZK8fchrV7BbTNfaHIfwT1nFuIO-4C8lh3VkWykIlUwd0ANWwQsY75Xb5ZC8P67QnXexV8CoXu5jHp2lsHm4Fhq75QEpRql7OpamOKBFqPtWvBneWTZOCnr1SrWR9DjBWnfRhMKr-4Oleaqp--YCIBaIiVaJDx6YqLKmTn5UeFSfcV9LT4y6yjFqgNK2mS6epFnmree9mjVYCyRdCWJRWyrA1xVbSA2xmu6i9z7ZuNaEUFKyL3uTwArzKkipy0aDBSVRsKuhCMV8dFsVBm3EWmyHzsoneT-zGM2aG5EYF7oOUlx2lXafiCDCYQ0YqRRWddQ",
+    "e": "AQAB",
+    "x5c": ["MIIC1jCCAb6gAwIBAgIQFcgeY4EZ65RDuxjfwa+tXDANBgkqhkiG9w0BAQsFADAnMSUwIwYDVQQDExxBREZTIFNpZ25pbmcgLSBzdHMubWF0YWtlLmpwMB4XDTE2MDQxMjExNTU1MloXDTE3MDQxMjExNTU1MlowJzElMCMGA1UEAxMcQURGUyBTaWduaW5nIC0gc3RzLm1hdGFrZS5qcDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANWoOH0zuuaq55lBDS+CuGSvH3Ia1ewW0zX2hyH8E9ZxbiDvuAvJYd1ZFspCJVMHdADVsELGO+V2+WQvD+u0J13sVfAqF7uYx6dpbB5uBYau+UBKUapezqWpjigRaj7VrwZ3lk2Tgp69Uq1kfQ4wVp30YTCq\/uDpXmqqfvmAiAWiIlWiQ8emKiypk5+VHhUn3FfS0+MusoxaoDStpkunqRZ5q3nvZo1WAskXQliUVsqwNcVW0gNsZruovc+2bjWhFBSsi97k8AK8ypIqctGgwUlUbCroQjFfHRbFQZtxFpsh87KJ3k\/sxjNmhuRGBe6DlJcdpV2n4ggwmENGKkUVnXUCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAK0bCMCgF3hfRnV5zwtO8Wzd5XBMkFVQmipOizv\/Llznn12jpe4mk1fKHqp1EuTtbEFQ93YGs9yaJb3bpU9MsSqKaTbcK269NgG\/v1ke1KcGFjL\/BkxABY5pRWG2U0Rpw1SL16DXoZj0gLT91A8gTikm8wTE8mqKBNarC6runStu8qw08iQqadkbg8zU+o7vLduyZlHTOO1sdXpKOcU1O+wirPz0tMtKfaXznF81LMhWhRxwRNOHqju8Vc5a1gcGG9Sj9lS0LaD+k7ybtiHx4DhiZ0tQP14C+OWPZDH1vtudkf6UpyBasxB4kVuOHDTB7sjPnOTqA4zKiKrHekW2jUg=="]
+  }]
+}
+```
+
+この Backend API 用の scope をどう扱えばいいのかとかは、またそのうち調べて見るかもしれません。
+
+どうせ「同意」とかいう概念がない IdP なんだから、Backend API 用の scope も形骸化しそうな気はするけど。
