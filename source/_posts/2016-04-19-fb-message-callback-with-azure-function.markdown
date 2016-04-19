@@ -24,7 +24,7 @@ Node.js のテンプレートアプリが出来上がります。
 
 <!-- more -->
 
-Azure 側の WebHook URL を FB Message の WebHook 設定に登録して、WebHook Verify 様にテンプレの Azure Function を書き換えます。
+Azure 側の WebHook URL を FB Message の WebHook 設定に登録して、WebHook Verify 用にテンプレの Azure Function を書き換えます。
 
 ![FB Message API Callback (FB WebHook)](/images/posts/azure/fb-message-callback.png)
 
@@ -43,7 +43,7 @@ module.exports = function(context, req) {
 
 これで FB 側の WebHook Verification が完了です。
 
-では次に、Text Message を Echo する様に Azure Function を書き換えましょう。
+では次に、Text Message を Echo するように Azure Function を書き換えましょう。
 
 まずは FB Graph API の Messaging API を叩くために必要な FB Page Token を、Azure Function の `Application Setting > App Setting` に設定しておきます。
 
