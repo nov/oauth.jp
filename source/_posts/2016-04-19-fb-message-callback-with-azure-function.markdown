@@ -12,23 +12,23 @@ Azure Function は、Azure Portal の Marketplace で "Function App" って検�
 
 ![Azure Function in Marketplace](/images/posts/azure/azure-function-in-marketplace.png)
 
-Function App の Deploy がおわっったら、QucikStart から "Webhook + API" を選びましょう。
+Function App の Deploy がおわったら、QuickStart から "Webhook + API" を選びましょう。
 
 ![Azure Function QuickStart](/images/posts/azure/azure-function-quickstart.png)
 
-Node.js のテンプレートアプリが出来上がります。
+以下の様な Node.js のテンプレートアプリが出来上がります。
 
 ![Azure Function Template](/images/posts/azure/azure-function-template.png)
 
-それでは、まず FB Message の WebHook として、この Function を登録します。
+まずは FB Message の WebHook としてこの Function を登録します。
 
 <!-- more -->
 
-Azure 側の WebHook URL を FB Message の WebHook 設定に登録して、WebHook Verify 用にテンプレの Azure Function を書き換えます。
+Azure Function の `Function URL` を FB Message API の `WebHook Callback URL` に登録して、適当な `verify_token` を設定します。
 
 ![FB Message API Callback (FB WebHook)](/images/posts/azure/fb-message-callback.png)
 
-Azure Function 仕様の WebHook Verify 様コードは、こんな感じ。
+WebHook Verification のために、テンプレの Azure Function を以下の様に書き換えます。
 
 ```js
 module.exports = function(context, req) {
@@ -41,13 +41,13 @@ module.exports = function(context, req) {
 };
 ```
 
-これで FB 側の WebHook Verification が完了です。
+これで FB 側の `Verify and Save` ボタンを押せば、WebHook の Verifycation が成功して WebHook の登録が完了します。
 
 では次に、Text Message を Echo するように Azure Function を書き換えましょう。
 
 まずは FB Graph API の Messaging API を叩くために必要な FB Page Token を、Azure Function の `Application Setting > App Setting` に設定しておきます。
 
-この時に使う FB Page Token は、Messenger API Config (developers.facebook.com/apps/<YOUR-APP-ID>/messenger/) で取得したものを使う様にしてください。そこで取得したものは Expire しません。
+この時に使う FB Page Token は、先ほど WebHook を登録したページ (FB Messenger API の設定ページ) で取得したものを使う様にしてください。そこで取得した FB Page Token は Expire しません。
 
 ![Azure Function Env](/images/posts/azure/azure-function-env.png)
 
@@ -90,4 +90,4 @@ module.exports = function (context, req) {
 
 早速該当 FB Page にメッセージを送ってみましょう。Echo が返ってくると思います。
 
-また今度、YAuth.jp の問い合わせ対応 Bot を作ってみるかな。
+さてと、YAuth.jp の問い合わせ対応 Bot を作ってみるかな。
