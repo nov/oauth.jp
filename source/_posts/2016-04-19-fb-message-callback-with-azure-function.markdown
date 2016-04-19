@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "FB Message Callback as an Azure Function"
+title: "FB Message API Callback as an Azure Function"
 date: 2016-04-19 10:56
 comments: true
 categories:
 ---
 
-今日は Azure Function で FB Message Callback を作ってみます。
+今日は Azure Function で FB Message API Callback を作ってみます。
 
 Azure Portal の Marketplace で "Function App" って検索すると、出てきますね。
 
@@ -26,7 +26,7 @@ Node.js のテンプレートアプリが出来上がります。
 
 Azure 側の WebHook URL を FB Message の WebHook 設定に登録して、WebHook Verify 様にテンプレの Azure Function を書き換えます。
 
-![FB Message Callback](/images/posts/azure/fb-message-callback.png)
+![FB Message API Callback (FB WebHook)](/images/posts/azure/fb-message-callback.png)
 
 Azure Function 仕様の WebHook Verify 様コードは、こんな感じ。
 
