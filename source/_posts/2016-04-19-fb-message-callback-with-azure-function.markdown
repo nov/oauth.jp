@@ -8,7 +8,7 @@ categories:
 
 今日は Azure Function で FB Message API Callback を作ってみます。
 
-Azure Portal の Marketplace で "Function App" って検索すると、出てきますね。
+Azure Function は、Azure Portal の Marketplace で "Function App" って検索すると出てきますね。
 
 ![Azure Function in Marketplace](/images/posts/azure/azure-function-in-marketplace.png)
 
