@@ -10,7 +10,7 @@ categories:
 
 事務局長就任のご挨拶的なポエムを書けというオーラをふつふつと感じながら、ガン無視してこの記事を書いております。
 
-さて、みなさん覚えておられるでしょうか？  
+さて、みなさん覚えておられるでしょうか？
 
 [OpenID Foundation Japan 翻訳 Working Group](http://openid-foundation-japan.github.io) のことを。
 
@@ -77,7 +77,7 @@ ACME や WebCrypto など、OpenID Connect 以外の仕様でも、JWK 表現さ
 
 実は各暗号アルゴリズムごとに必要な JSON メンバの定義などは JSON Web Algorithm という別仕様にまとめられているので、そちらもいつか翻訳しなきゃなとは思っています。
 
-あと JWK の識別子 (`kid`) として利用されることがおおい JWK Thumbprint という仕様も、そのうち翻訳しようと思っています。
+あと JWK の識別子 (`kid`) として利用されることがおおい JWK Thumbprint という仕様も、そのうち翻訳しようと思っています。
 
 ということで、今後も [OIDF-J 翻訳 WG](http://openid-foundation-japan.github.io) の活動をお楽しみに！
 
