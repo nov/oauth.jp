@@ -26,6 +26,8 @@ Office 365 の制約とか Azure AD の制約とか全く前提知識なしに�
 * [Office365/AzureAD - OpenAMとのID連携 (2)](http://idmlab.eidentity.jp/2014/12/office365azureadopenamid.html)
 * [Office365/AzureAD - OpenAMとのID連携 (3)](http://idmlab.eidentity.jp/2014/12/office365azureadopenamid_25.html)
 
+<!-- more -->
+
 ## Office 365 & Azure AD のドメインが違う問題
 
 僕、最初に Azure AD に YAuth.jp のディレクトリ (`yauth.onmicrosoft.com`) 作成して、そのあと別の機会に Office 365 の Subscription (`yauthjp.onmicrosoft.com`) を開始したんで、それら2つが別ディレクトリになっておりまして、前者に `yauth.jp` ドメインを紐付けてたんで、Office 365 側に `yauth.jp` ドメインを紐付けられなかったんですね。

@@ -29,6 +29,8 @@ categories:
 
 JWK 翻訳しようとしたら、途中まで翻訳されて休眠してた OAuth Revocation の存在を思い出しただけです！
 
+<!-- more -->
+
 ## OAuth Revocation
 
 OAuth Revocation は、必要なくなったけどまだ有効期限が残っている Access Token や Refresh Token を、OAuth Client が OAuth Server に「もういらないよ」って伝えて、OAuth Server 側で Token の無効化を行う仕様です。
@@ -81,3 +83,8 @@ ACME や WebCrypto など、OpenID Connect 以外の仕様でも、JWK 表現さ
 
 ということで、今後も [OIDF-J 翻訳 WG](http://openid-foundation-japan.github.io) の活動をお楽しみに！
 
+[追記]
+
+JWK Thumbprint も翻訳しました。
+
+* [JSON Web Key (JWK) Thumbprint - RFC 7638](http://openid-foundation-japan.github.io/rfc7638.ja.html)
