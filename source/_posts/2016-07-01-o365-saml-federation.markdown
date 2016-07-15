@@ -103,7 +103,7 @@ Federated Domain は Primary にできないんで、Azure AD 管理画面から
 
 どんだけまっても同じエラーで、これはしばらく経ってもラチあかねんんじゃね？ってなって...
 
-結果、Google 先生に「Immutable ID には61文字までしか入れられない」って教えられたよ。
+結果、Google 先生に「[Immutable ID には61文字までしか入れられない](https://www.gittprogram.com/question/80283_new-msoluser-immutableid-max-length-error.html)」って教えられたよ。
 
 こっちは64文字だよ...
 
