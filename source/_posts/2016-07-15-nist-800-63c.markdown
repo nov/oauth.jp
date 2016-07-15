@@ -1,0 +1,76 @@
+---
+layout: post
+title: NIST 800-63C を翻訳しました
+date: 2016-07-15 15:06
+comments: true
+categories:
+---
+
+先日このブログでも紹介した [OAuth Revocation, JWK JWK Thumbprint 仕様の翻訳版](http://oauth.jp/blog/2016/07/01/jwk-and-oauth-revocation-translated/) に引き続き、OpenID Foundation Japan 翻訳・教育 WG リーダーとしての Nov です。
+
+先日 [翻訳 WG の Facebook Page](https://www.facebook.com/OpenIDTrans/posts/1226159194083566) でも告知したように、現在 [NIST SP 800-63-3 - Digital Authentication Guideline](https://pages.nist.gov/800-63-3/) の翻訳を開始しています。
+
+今日はその中から、すでに翻訳が完了している [NIST SP 800-63C - Federation and Assertions](https://openid-foundation-japan.github.io/800-63-3/sp800-63c.ja.html) のご紹介です。
+
+## Level of Assurance
+
+プロフェッショナルなみなさまのことです、すでに Level of Assurance とか LoA とかいう単語を耳にしたこともおありでしょう。
+
+NIST SP 800-63 は、LoA の各レベルでの要求事項を具体的に定めている NIST (米国国立標準技術研究所) の公式ドキュメントで、800-63-3 はその Revision 3 です。
+
+Revison 3 では、Revision 2 まで単一のドキュメントだった 800-63 を、以下の4つに分割しています。
+
+* SP 800-63-3 (Digital Authentication Guideline)
+* SP 800-63A (Identity Proofing & Enrollment)
+* SP 800-63B (Authentication & Lifecycle Management)
+* SP 800-63C (Federation & Assertions)
+
+そして LoA も3つの Assurance Levels に分割し、それぞれをレベル分けした上で、それぞれのレベルの組み合わせを持って LoA を定義しています。
+
+* Identity Assurance Level (IAL, Lv.1 - Lv.3 までの3段階)
+* Authenticator Assurance Level (AAL, Lv.1 - Lv.3 までの3段階)
+* Federation Assurance Level (FAL, Lv.1 - Lv.4 までの4段階)
+
+LoA 自体は今まで通り Lv.1 - Lv.4 までの4段階で、それぞれの LoA に求められる IAL, AAL, FAL のレベルは以下の通りとなっています。
+
+| LOA | IAL | AAL | FAL |
+| --- | --- | --- | --- |
+|  1  |  1  |  1  |  1
+|  2  |  2  | 2 or 3 |  2
+|  3  |  2  | 2 or 3 |  2
+|  4  |  3  | 3 |  4
+
+LoA Lv.2.5 とか、Lv.1+ とか、謎のオレオレ定義が乱立してた LoA の定義も、こういう仕組みで多少はフィレキシブルに扱えるように...
+
+ま、なるといいですね。
+
+## Federation Assurance Level (FAL)
+
+で、上記のうち FAL を定義しているのが、[NIST SP 800-63C - Federation and Assertions](https://openid-foundation-japan.github.io/800-63-3/sp800-63c.ja.html) です。
+
+800-63C では、Assertion と Federation Protocol のレベル分けのために、それらの特徴を複数のカテゴリに渡って分類し、それらの組み合わせによって FAL を定義しています。
+
+| FAL | Requirement |
+| --- | --- |
+|  1  | Bearer assertion, direct presentation, asymmetrically signed by CSP
+|  2  | Bearer assertion, indirect presentation, asymmetrically signed by CSP
+|  3  | Bearer assertion, indirect presentation, asymmetrically signed by CSP and encrypted to RP
+|  4  | Holder of key assertion, indirect presentation, asymmetrically signed by CSP and encrypted to RP
+
+Bearer か Holder-of-Key かとか、Direct か Indirect か (Artifact 使うか使わないか) とか、署名のみか署名後暗号化するかとか、プロフェッショナルなみなさまにはたまらないですよね！
+
+ってことで、プロフェッショナルなみなさまにおかれましては、ぜひ翻訳版読んでいただいて、[日本語版の GitHub Repository](https://github.com/openid-foundation-japan/800-63-3) へのフィードバックお待ちしております！
+
+あと NIST 本家の英語版も絶賛更新中らしいんで、[英語語版の GitHub Repository](https://github.com/usnistgov/800-63-3) にもフィードバックしてあげると喜ばれると思います！
+
+僕も3箇所ほどフィードバックして見ましたが、特に報告者の国籍等は関係無く反応返ってくるので、どっかのパブコメよりはよっぽど...おっと、誰か来たようだ。
+
+## 残りの 800-63-3, 800-63A, 800-63B について
+
+絶賛翻訳中です。
+
+NIST 800-63-3 シリーズはセクションごとにファイルが分割していて翻訳箇所の並列化がしやすくなってるので、翻訳手伝ってくれるひとはまだまだ募集してます。
+
+応募方法は [翻訳 WG の Facebook Page](https://www.facebook.com/OpenIDTrans/posts/1226159194083566) をご覧ください。
+
+じっくりドキュメントを読み込みたい方には、翻訳とかいい機会だと思いますよ！
