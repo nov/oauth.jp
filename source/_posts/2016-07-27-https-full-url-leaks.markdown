@@ -37,7 +37,7 @@ Code 置換攻撃 (Code Cut & Paste Attack) が可能になります。
 1. 攻撃者自身のブラウザで Authorization Request 発行
 2. 攻撃者自身の IdP 上のアカウントで IdP にログイン
 3. Authorization Response を途中で止める
-4. Authorization Response 中に含まれる `code` を被害者のものに置換 (state は置換しない)
+4. Authorization Response 中に含まれる `code` を被害者のものに置換 (`state` は置換しない)
 5. Code 置換済の Authorization Response を RP に送る
 
 こうすると、RP が `state` を使った CSRF 対策を行っていても、RP は受け取った `code` を使って攻撃者を被害者としてログインさせてしまいます。
@@ -54,3 +54,38 @@ OpenID Connect では、Authorization Request で `nonce` というパラメー�
 
 あれは `state` とよく似た役割を果たしますが、`code` とは紐付かない `state` と異なり、`nonce` は `code` と紐づいて保存され、最終的に発行される ID Token に含まれて返ってきます。
 
+よって、`code` だけ置換しても、`nonce` に紐付いた Cookie なりを奪わない限り、RP が Token Endpoint から返ってきた `nonce` をチェックした時点で `code` 置換を検知できることになります。
+
+ようするに、OpenID Connect の仕様的には OPTIONAL やけど、とりあえず `nonce` 使っとけや、ってことですね。
+
+## OAuth 2.0 の場合 : PKCE 拡張を使う
+
+`nonce` のない OAuth 2.0 の場合、Authorization Request & Response のセッションと `code` を紐付けるパラメータが特にありません。
+
+そして、それでは Code 置換攻撃は防げません。
+
+よって、`code` と紐付いたパラメータを用意してやる必要があります。
+
+OpenID Foundation Japan 事務局長としては「OpenID Connect 使えや」って話でもあるわけですが、もうちょっとお手軽な方法としては [OAuth PKCE](https://tools.ietf.org/html/rfc7636) というのもあります。
+
+PKCE はもともと `client_secret` を持てない OAuth Client 向けに作られた仕様ですが、Authorization Request で送った `code_challenge` と紐づく `code_verifier` を Token Endpoint に送ることになるので、当然ながら IdP 側では `code` と `code_challenge` を紐付けて管理することになります。
+
+つまり、`code` を置換すると、`code_verifier` が合わなくなって、Token Request が失敗する、と。
+
+ちなみに、PKCE には `code_challenge_mode` っていうパラメータがありますが、`code_challenge_mode=plain` は Authorization Request みれる状況では `code_verifier` 自体が漏れることになるんでダメで、この攻撃防ぐためには `S256` を使ってくださいね。
+
+さて、これで OAuth 2.0 でも Code 置換攻撃、防げましたね。
+
+これからは Confidential Client (`client_secret` 持てる OAuth Client) でも PKCE 使えってことですね。
+
+ただ PKCE は OAuth 拡張なんで、OAuth Server (IdP) 側がまず PKCE 対応する必要があります。
+
+Facebook Login とか使ってる人たちは、どうすればいいんでしょうねぇ〜
+
+## まとめ
+
+OpenID Connect を使ってる場合は、RP が常に `nonce` 使えばいいだけなんで、RP だけが注意してれば大丈夫ですね。
+
+OAuth 2.0 を使ってる場合は、OAuth Server (IdP) 側がまず PKCE なり OpenID Connect なりに対応して、RP がそれを使う必要がありそうです。
+
+**Facebook のみなさん、聞こえますかぁ〜**
