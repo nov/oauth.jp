@@ -3,7 +3,7 @@ layout: post
 title: "HTTPS でも Full URL が漏れる？OAuth の code も漏れるんじゃね？？"
 date: 2016-07-27 10:48
 comments: true
-categories: 
+categories:
 ---
 
 なんですかこれは！
@@ -58,7 +58,7 @@ OpenID Connect では、Authorization Request で `nonce` というパラメー�
 
 ようするに、OpenID Connect の仕様的には OPTIONAL やけど、とりあえず `nonce` 使っとけや、ってことですね。
 
-## OAuth 2.0 の場合 : PKCE 拡張を使う
+## OAuth 2.0 の場合 (1) : PKCE 拡張を使う
 
 `nonce` のない OAuth 2.0 の場合、Authorization Request & Response のセッションと `code` を紐付けるパラメータが特にありません。
 
@@ -82,6 +82,14 @@ PKCE はもともと `client_secret` を持てない OAuth Client 向けに作�
 
 Facebook Login とか使ってる人たちは、どうすればいいんでしょうねぇ〜
 
+## OAuth 2.0 の場合 (2) : response_mode=form_post を使う
+
+PKCE 同様 `response_mode=form_post` も拡張仕様なのでどの OAuth Server (IdP) でも使えるわけではないですが、`response_mode=form_post` を使うと Authorization Code は POST Body に含まれて返されるので、Full URL が漏れても `code` は漏れません。
+
+Session と紐付けた `nonce` なり `code_verifier` なりを管理するより、RP にとっては `response_mode=form_post` を使うほうが楽かもしれませんね。
+
+「Session と紐付ける」って概念、意外に通じないことも多いですし。
+
 ## まとめ
 
 OpenID Connect を使ってる場合は、RP が常に `nonce` 使えばいいだけなんで、RP だけが注意してれば大丈夫ですね。
@@ -89,3 +97,9 @@ OpenID Connect を使ってる場合は、RP が常に `nonce` 使えばいい�
 OAuth 2.0 を使ってる場合は、OAuth Server (IdP) 側がまず PKCE なり OpenID Connect なりに対応して、RP がそれを使う必要がありそうです。
 
 **Facebook のみなさん、聞こえますかぁ〜**
+
+ps.
+
+「OAuth 2.0 の場合」というセクションタイトルになってますが、OpenID Connect でも nonce の代わりに PKCE なり response_mode=form_post 使ってもいいです。
+
+OAuth 2.0 のレベルで解決できてるなら、OpenID Connect 特有のパラメータを利用しなくても (この攻撃は) 防げます。
