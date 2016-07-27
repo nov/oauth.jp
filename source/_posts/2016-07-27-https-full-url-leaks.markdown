@@ -82,7 +82,7 @@ PKCE はもともと `client_secret` を持てない OAuth Client 向けに作�
 
 Facebook Login とか使ってる人たちは、どうすればいいんでしょうねぇ〜
 
-## OAuth 2.0 の場合 (2) : response_mode=form_post を使う
+## OAuth 2.0 の場合 (2) : response_mode=form_post を使う (Thanks to @zigorou)
 
 PKCE 同様 `response_mode=form_post` も拡張仕様なのでどの OAuth Server (IdP) でも使えるわけではないですが、`response_mode=form_post` を使うと Authorization Code は POST Body に含まれて返されるので、Full URL が漏れても `code` は漏れません。
 
