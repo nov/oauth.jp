@@ -34,6 +34,8 @@ Business Plan 契約して設定画面行かないと、SP Entity ID も Asserti
 
 **ファーストひどい。**
 
+<!-- more -->
+
 で、金払って Organization の Security 設定ページ (https://github.com/organizations/YOUR-ORGANIZATION/settings/security) にアクセスすると、SAML 設定が ON にできるようになってます。
 
 ここに以下の情報が表示されています。
