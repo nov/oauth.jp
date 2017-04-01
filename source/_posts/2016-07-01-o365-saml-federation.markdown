@@ -26,6 +26,10 @@ Office 365 の制約とか Azure AD の制約とか全く前提知識なしに�
 * [Office365/AzureAD - OpenAMとのID連携 (2)](http://idmlab.eidentity.jp/2014/12/office365azureadopenamid.html)
 * [Office365/AzureAD - OpenAMとのID連携 (3)](http://idmlab.eidentity.jp/2014/12/office365azureadopenamid_25.html)
 
+あとはこの本もおすすめ。
+
+<a href="https://www.amazon.co.jp/%E8%84%B1%E3%82%AA%E3%83%B3%E3%83%97%E3%83%AC%E3%83%9F%E3%82%B9-%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E6%99%82%E4%BB%A3%E3%81%AE%E8%AA%8D%E8%A8%BC%E5%9F%BA%E7%9B%A4-Active-Directory-%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%BD%E3%83%95%E3%83%88%E9%96%A2%E9%80%A3%E6%9B%B8-ebook/dp/B01IB6Q79W/ref=as_li_ss_il?ie=UTF8&qid=1491030816&sr=8-7&keywords=azure&linkCode=li3&tag=bianca0b-22&linkId=6d34dacc7b28dbb8de4dc560a0ad084f" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01IB6Q79W&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=bianca0b-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=bianca0b-22&l=li3&o=9&a=B01IB6Q79W" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+
 <!-- more -->
 
 ## Office 365 & Azure AD のドメインが違う問題

@@ -10,7 +10,7 @@ categories:
 
 ということで、さわって見ました。
 
-# Step.1 Azure AD B2C テナントの作成
+## Step.1 Azure AD B2C テナントの作成
 
 まずは Azure AD B2C テナントを作成します。なんか portal.azure.com から行くと Classic Portal ベースのドキュメントに飛ばされるので、新しい方の Portal ベースのドキュメントをリンクしときますね。
 
@@ -18,7 +18,7 @@ categories:
 
 テナントを Subscription と紐づけるとかいう処理は Production Use でない限り Skip で OK です。
 
-# Step.2 Web API (Resource Server) および Client の登録
+## Step.2 Web API (Resource Server) および Client の登録
 
 [Azure AD B2C Access Tokens now in public preview](https://azure.microsoft.com/ja-jp/blog/azure-ad-b2c-access-tokens-now-in-public-preview/) にしたがって、Web API と Client を登録します。
 
@@ -40,7 +40,7 @@ Resource Server に Redirect URI (Reply URL) の登録が必須だったり、Im
 
 <!-- more -->
 
-# Step.4 Policy の作成
+## Step.4 Policy の作成
 
 Azure AD B2C に外部 Resource Server 向けの JWT 形式の Access Token を払い出させるには、Policy ID を指定しないといけません。
 
@@ -54,7 +54,7 @@ OpenID Connect Discovery では Query Parameter とかサポートしてない�
 
 この Policy は Resource Server ごとに指定するものでも無いようなんで、まぁデフォルトのまま放置して Policy ID だけ取得しとけば OK です。
 
-# Step.3 Access Token の取得
+## Step.3 Access Token の取得
 
 この Gist に適宜自分で作った Client ID やらなんやら指定してやれば、HTTP のやりとりなどが Console に表示されるんで、それ見ながらフロー確認してください。
 
@@ -71,7 +71,7 @@ Password: ]6]yzxXYG7uruM4p
 
 動かなくなったら、あきらめて自分で Azure AD B2C 環境セットアップしてください。
 
-# わかったこと
+## わかったこと
 
 * Access Token の audience は Resource Server Application の Object ID。
 * Access Token の audience は Array にはできない。
@@ -89,6 +89,7 @@ Password: ]6]yzxXYG7uruM4p
 * JWT の "aud" Claim が自身の Azure AD B2C 上の Object ID であり
 * 必要な Scope が "scp" Claim に含まれており
 * "azp" Claim に含まれる Client ID が正当な Client のものであり
+  * 余談ですが同じく MS さんが主導の [OAuth 2.0 Token Exchange](https://tools.ietf.org/html/draft-ietf-oauth-token-exchange-07#section-4.3) では "cid" Claim なのに、ここでは "azp" なのはなんというか...w
 * 期限切れでない
 
 ことを確認する感じになりますね。
