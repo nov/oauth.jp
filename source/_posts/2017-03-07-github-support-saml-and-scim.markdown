@@ -147,7 +147,3 @@ Gist ドキュメントもらえば書いて...ないですけど、API リク�
 そこはすばらしいですけど。
 
 **お前それ致命的やろ。**
-
-Octocat はかわいいけども。
-
-<a href="https://www.amazon.co.jp/Github-Octocat-Figurine-%E3%82%AA%E3%82%AF%E3%83%88%E3%82%AD%E3%83%A3%E3%83%83%E3%83%88-%E3%83%95%E3%82%A3%E3%82%AE%E3%83%A5%E3%82%A2/dp/B01L6VR96O/ref=as_li_ss_il?ie=UTF8&qid=1491031942&sr=8-7&keywords=github&linkCode=li3&tag=bianca0b-22&linkId=0a81153b8af09233c305993da8a2a3ee" target="_blank"><img border="0" src="//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B01L6VR96O&Format=_SL250_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=bianca0b-22" ></a><img src="https://ir-jp.amazon-adsystem.com/e/ir?t=bianca0b-22&l=li3&o=9&a=B01L6VR96O" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
