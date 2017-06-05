@@ -66,6 +66,7 @@
 					color: $color-gray01;
 				}
 			}
+			.author:before{content: "\f007";}
 			.date:before{content: "\f073";}
 			.tags:before{content: "\f02c";}
 			.comments:before{content: "\f075";}
