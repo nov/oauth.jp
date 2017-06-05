@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://oauthjp.github.io
+url: http://oauth.jp
 title: OAuth.jp
 subtitle: A blogging framework for hackers.
 author: Nov Matake
@@ -63,7 +63,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user: oauthjp
+github_user: nov
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
@@ -73,7 +73,7 @@ twitter_user: oauthjp
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: true
+google_plus_one:
 google_plus_one_size: medium
 
 # Google Plus Profile
