@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Azure Portal 上の In-Browser PowerShell から O365 SAML 設定"
+title: Azure Portal 上の PowerShell から O365 SAML 設定
 date: 2017-11-02 15:22
 comments: true
 categories:
