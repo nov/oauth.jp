@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
-[OAuth IdP Mix-Up Attack とは？](http://oauth.jp/blog/2016/01/12/oauth-idp-mix-up-attack/) のつづき。
+[OAuth IdP Mix-Up Attack とは？](/blog/2016/01/12/oauth-idp-mix-up-attack/) のつづき。
 
 OAuth ML上で、以下のどちらを採用すべきかについての議論が収まる気配のない昨今です。
 

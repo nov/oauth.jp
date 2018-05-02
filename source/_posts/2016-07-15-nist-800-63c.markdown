@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
-先日このブログでも紹介した [OAuth Revocation, JWK JWK Thumbprint 仕様の翻訳版](http://oauth.jp/blog/2016/07/01/jwk-and-oauth-revocation-translated/) に引き続き、OpenID Foundation Japan 翻訳・教育 WG リーダーとしての Nov です。
+先日このブログでも紹介した [OAuth Revocation, JWK JWK Thumbprint 仕様の翻訳版](/blog/2016/07/01/jwk-and-oauth-revocation-translated/) に引き続き、OpenID Foundation Japan 翻訳・教育 WG リーダーとしての Nov です。
 
 先日 [翻訳 WG の Facebook Page](https://www.facebook.com/OpenIDTrans/posts/1226159194083566) でも告知したように、現在 [NIST SP 800-63-3 - Digital Authentication Guideline](https://pages.nist.gov/800-63-3/) の翻訳を開始しています。
 

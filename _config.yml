@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://oauth.jp
+url: https://oauth.jp
 title: OAuth.jp
 subtitle: A blogging framework for hackers.
 author: Nov Matake

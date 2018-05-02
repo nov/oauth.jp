@@ -18,4 +18,4 @@ OpenID TechNight Vol.10 ではこれらの仕様の概要説明も行いまし�
 * [JWT & JOSE 翻訳](http://slideshare.net/matake/jwt-trans)
 
 引き続き JSON Web Encryption (JWE) および OAuth2 JWT Bearer Token Profile も翻訳予定です。(スケジュール未定)
-翻訳にご協力いただける方は、[@nov](http://twitter.com/nov) まで :)
+翻訳にご協力いただける方は、[@nov](https://twitter.com/nov) まで :)

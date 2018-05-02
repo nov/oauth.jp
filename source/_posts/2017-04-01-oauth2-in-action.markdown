@@ -35,7 +35,7 @@ categories:
 
 まだ読んでないんですが、目次見る限り Part2 までは初心者向け、Part3 はセキュリティ厨の皆様向け、Part4 は ID 厨の皆様向けって感じでしょうか。
 
-ちなみに Justin は、先日翻訳した [NIST SP 800-63C](http://oauth.jp/blog/2016/07/15/nist-800-63c/) の英語版の著者の1人でもあり、Java の OpenID Connect 実装の1つである [MITREid Connect](https://id.mitre.org/connect/) の中の人でもあります。
+ちなみに Justin は、先日翻訳した [NIST SP 800-63C](/blog/2016/07/15/nist-800-63c/) の英語版の著者の1人でもあり、Java の OpenID Connect 実装の1つである [MITREid Connect](https://id.mitre.org/connect/) の中の人でもあります。
 
 Part4 の OAuth Dynamic Client Registration に関しては、以下の2つの RFC の Editor です。
 

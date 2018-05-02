@@ -6,7 +6,7 @@ comments: true
 categories:
 ---
 
-[OAuth 2.0 Implicit Flow では Covert Redirect 経由で access token が漏れる件](http://oauth.jp/blog/2014/05/07/covert-redirect-in-implicit-flow/)については既に紹介しましたが、ここではみなさん大好き Facebook Login で OAuth Client Developer ができる対策について紹介することにします。
+[OAuth 2.0 Implicit Flow では Covert Redirect 経由で access token が漏れる件](/blog/2014/05/07/covert-redirect-in-implicit-flow/)については既に紹介しましたが、ここではみなさん大好き Facebook Login で OAuth Client Developer ができる対策について紹介することにします。
 
 ### 攻撃方法
 
