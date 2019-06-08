@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sign in with Apple 特徴 (1)"
+title: "Sign in with Apple の特徴分析 (1)"
 date: 2019-06-08 21:04
 comments: true
 categories:
