@@ -143,3 +143,6 @@ Apple ID ってなんかやたら二段階認証設定させようとしてく�
 [ユーザーの行動や消費を“格付け”「Yahoo!スコア」の作成・利用を拒否する方法](https://news.yahoo.co.jp/byline/fujisiro/20190604-00128752/)
 
 それではいい週末を。
+
+追記)  
+[Sign in With Apple の特徴分析 (2)](/blog/2019/06/08/sign-in-with-apple-analysis-2/) 書きました。
