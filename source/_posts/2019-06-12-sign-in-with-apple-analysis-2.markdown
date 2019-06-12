@@ -45,6 +45,8 @@ categories:
 * Primary App ID
   * App ID および Service ID に対して Sign in with Apple の設定をする際に指定
   * Primary App ID 単位で Key を発行
+  * Primary App ID 単位で Client Access を Revoke
+  * (たぶん) Primary App ID 単位で Private Email を発行
 * Key
   * Client Secret に指定する JWT に署名するための EC 秘密鍵
   * Primary App ID に紐づく
