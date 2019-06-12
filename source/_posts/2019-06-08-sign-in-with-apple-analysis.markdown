@@ -145,4 +145,4 @@ Apple ID ってなんかやたら二段階認証設定させようとしてく�
 それではいい週末を。
 
 追記)  
-[Sign in With Apple の特徴分析 (2)](/blog/2019/06/08/sign-in-with-apple-analysis-2/) 書きました。
+[Sign in With Apple の特徴分析 (2)](/blog/2019/06/12/sign-in-with-apple-analysis-2/) 書きました。
