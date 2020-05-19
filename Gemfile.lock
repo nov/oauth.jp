@@ -65,6 +65,3 @@ DEPENDENCIES
   sass-globbing (~> 1.0.0)
   sinatra
   stringex (~> 1.4.0)
-
-BUNDLED WITH
-   1.13.7
