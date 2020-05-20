@@ -95,3 +95,8 @@ PKCE それでいんだっけ？？
 う〜ん、このケースでの挙動、[RFC 7636 - Proof Key for Code Exchange by OAuth Public Clients](https://tools.ietf.org/html/rfc7636) では特に触れられてないんですけど、やっぱ普通に考えれば、code_challenge に紐づいてない Code と code_verifier が渡されてきたら、エラーですよね...
 
 みなさんの実装はいかがでしょうか？
+
+### 追記
+
+上記 "PKCE CSRF Protection Bypass (仮" に関しては、以下の記事では "Downgrade Attack on PKCE" と名付けられたようです。  
+https://danielfett.de/2020/05/16/pkce-vs-nonce-equivalent-or-not/#downgrade-attack-on-pkce
