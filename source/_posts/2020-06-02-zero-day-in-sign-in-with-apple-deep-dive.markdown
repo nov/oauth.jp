@@ -57,9 +57,7 @@ http://signin-with-apple.herokuapp.com/?popup=true
 
 ここ、よく見ると OAuth 2.0 Web Message Response Mode (WMRM, `response_mode=web_message`) が使われています。
 
-大昔、[@zigorou](https://twitter.com/zigorou) さんと [@_nat](https://twitter.com/_nat) さんとノリで Independent  Draft まで書いて、その後放置してるやつですねw
-
-懐かしいですねぇ..
+大昔、[@zigorou](https://twitter.com/zigorou) さんと [@_nat](https://twitter.com/_nat) さんとノリで Independent  Draft まで書いて、その後放置してるやつですね。懐かしいですねぇ.. #遠い目
 
 [OAuth 2.0 Web Message Response Mode](https://tools.ietf.org/html/draft-sakimura-oauth-wmrm-00)
 
@@ -67,5 +65,5 @@ Apple さんは `redirect_uri` に Origin 指定したりとかはしてない�
 
 OAuth WMRM、実は Auth0 とか Okta とかも使ってるんですよね。Okta のはなんか変な Prefix ついてるけど。
 
-[OAuth 2.0 Authorization Framework - Auth0](https://auth0.com/docs/protocols/oauth2#how-response-mode-works)
-[OpenID Connect & OAuth 2.0 API - Okta](https://developer.okta.com/docs/reference/api/oidc/#postmessage-data-object)
+* [OAuth 2.0 Authorization Framework - Auth0](https://auth0.com/docs/protocols/oauth2#how-response-mode-works)
+* [OpenID Connect & OAuth 2.0 API - Okta](https://developer.okta.com/docs/reference/api/oidc/#postmessage-data-object)
