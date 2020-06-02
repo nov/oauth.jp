@@ -23,7 +23,7 @@ categories:
 4. ここで「続ける」を押すと内部的に Ajax Call が実行される
     * Ajax API EP: https://appleid.apple.com/appleauth/auth/oauth/authorize
     * 選択されたメアドやその他の AuthZ Req Params が一通り JSON で POST される
-    * レスポンスとしては id_token とか code なんかが含まれた JSON が返ってくる
+    * レスポンスとしては `id_token` とか `code` なんかが含まれた JSON が返ってくる
     * ![Sign in with Apple Consent Ajax Submit](/images/posts/apple/siwa-consent-ajax-submit.png =500x)
 
 で、問題は Step.4 で Submit されるメールアドレスが、実際当該 Apple ID に紐づいてないものでも OK だったということですね。
@@ -38,9 +38,9 @@ categories:
 
 ### Email 以外を書き換えるとどうなる？
 
-ちなみにこの Ajax Call のタイミングで client_id & redirect_uri を通信途中で改竄してやると、別 Client 向けの Code が正規 Client の正規 Redirect URI に返されるなんていう挙動もあります。
+ちなみにこの Ajax Call のタイミングで `client_id` & `redirect_uri` を通信途中で改竄してやると、別 Client 向けの Code が正規 Client の正規 Redirect URI に返されるなんていう挙動もあります。
 
-Submit された値に基づいてサーバーサイドで Auto-submit Form なりをレンダリングしてレスポンスを返すのではなく、既に同意画面中に仕込まれた JS とパラメーター値を使ってレスポンス返してるので、Ajax Call 中で書き換えられた email 以外の値はレスポンスを返すべきか否かの判断には使われていないのですね。
+Submit された値に基づいてサーバーサイドで Auto-submit Form なりをレンダリングしてレスポンスを返すのではなく、既に同意画面中に仕込まれた JS とパラメーター値を使ってレスポンス返してるので、Ajax Call 中で書き換えられた `email` 以外の値はレスポンスを返すべきか否かの判断には使われていないのですね。
 
 まぁそれ自体がそこまで大きな問題かというと、そんな気はしませんが。。。ちょっと設計が微妙というか、フロントエンジニアが勝手に設計したらこうなっちゃったみたいな雰囲気が満載ですね。
 
@@ -63,7 +63,7 @@ http://signin-with-apple.herokuapp.com/?popup=true
 
 [OAuth 2.0 Web Message Response Mode](https://tools.ietf.org/html/draft-sakimura-oauth-wmrm-00)
 
-Apple さんは redirect_uri に Origin 指定したりとかはしてないんですけどね。
+Apple さんは `redirect_uri` に Origin 指定したりとかはしてないんですけどね。
 
 OAuth WMRM、実は Auth0 とか Okta とかも使ってるんですよね。Okta のはなんか変な Prefix ついてるけど。
 
