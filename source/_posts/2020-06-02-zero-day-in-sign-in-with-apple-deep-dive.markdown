@@ -48,14 +48,14 @@ Submit された値に基づいてサーバーサイドで Auto-submit Form な�
 
 Sign in with Apple のフロントチャネルで発行された ID Token は、ガン無視して捨ててやれば良いのです。あれにはまず使い道はありません。
 
-### 余談 : OAuth 2.0 Web Message Response Mode (WMRM) 使われてる！
+### 余談 : OAuth 2.0 WMRM 使われてる！
 
 Sign in with Apple には Popup Mode なるものがあります。
 
 実際以下の URL にアクセスして黒い方のボタンをクリックするとそれが体験できます。  
 http://signin-with-apple.herokuapp.com/?popup=true
 
-ここ、よく見ると `response_mode=web_message` が使われています。
+ここ、よく見ると OAuth 2.0 Web Message Response Mode (WMRM, `response_mode=web_message`) が使われています。
 
 大昔、[@zigorou](https://twitter.com/zigorou) さんと [@_nat](https://twitter.com/_nat) さんとノリで Independent  Draft まで書いて、その後放置してるやつですねw
 
