@@ -13,7 +13,7 @@ categories:
 ### 実際にどこが脆弱だったのか
 
 1. 非 Safari ブラウザで、適当な RP にアクセス
-    * e.g.,) http://signin-with-apple.herokuapp.com/
+    * e.g.,) http://signin-with-apple.herokuapp.com/ (Nov SIWA RP)
     * Safari だと OS の Native UI が出てきてブラウザ遷移しないので注意
     * 既に連携済の RP の場合は一度連携解除しておくこと
 2. Sign in with Apple のボタンをクリックして Apple AuthZ Endpoint に遷移
@@ -36,17 +36,35 @@ categories:
 
 現在はメールアドレスとアカウントの紐付けがサーバーサイドでチェックされているので、変なメールアドレスを投げるとちゃんと 400 が返ってきます。
 
+<!--
 ### Email 以外を書き換えるとどうなる？
 
 ちなみにこの Ajax Call のタイミングで `client_id` & `redirect_uri` を通信途中で改竄してやると、別 Client 向けの Code が正規 Client の正規 Redirect URI に返されるなんていう挙動もあります。
 
+具体的には、Nov SIWA RP でログイン開始して、Apple IdP の同意画面で実行される Ajax Call でだけ `client_id` & `redirect_uri` を以下のように書き換えてやると...
+
+* client_id
+    * From: jp.yauth.signin.service3 (Nov SIWA RP)
+    * To: net.zexy.koimusubi.ios.signinwithapple (ゼクシィ恋結び)
+* redirect_uri
+    * From: https://signin-with-apple.herokuapp.com/callback
+    * To: https://zexy-koimusubi.net/web/auth/apple_login/callback
+
+ゼクシィ恋結び向けの `id_token` および `code` が Nov SIWA RP の Redirect URI に渡されてきます。
+
 Submit された値に基づいてサーバーサイドで Auto-submit Form なりをレンダリングしてレスポンスを返すのではなく、既に同意画面中に仕込まれた JS とパラメーター値を使ってレスポンス返してるので、Ajax Call 中で書き換えられた `email` 以外の値はレスポンスを返すべきか否かの判断には使われていないのですね。
 
-まぁそれ自体がそこまで大きな問題かというと、そんな気はしませんが。。。ちょっと設計が微妙というか、フロントエンジニアが勝手に設計したらこうなっちゃったみたいな雰囲気が満載ですね。
+まぁそれ自体がそこまで大きな問題かというと、そんな気はしませんが。。。
+
+ちょっと設計が微妙というか、フロントエンジニアが勝手に設計したらこうなっちゃった、みたいな雰囲気ですね。
 
 ということで、まだ ID Token の `aud` は別の値にされる可能性は残っているのですが、まぁ普通に `code` 使ってバックチャネルで ID Token 取れば、`aud` が書き換えられた ID Token は発行されないんで、そうすればよいです。
 
 Sign in with Apple のフロントチャネルで発行された ID Token は、ガン無視して捨ててやれば良いのです。あれにはまず使い道はありません。
+
+ちなみに、既婚者はゼクシィ恋結びを利用してはなりませんし、嫁にゼクシィ恋結びと連携済の Apple IdP の画面なんかみられた日にゃ血の雨が降りますので、これを試したら即連携解除必須です。
+
+-->
 
 ### 余談 : OAuth 2.0 WMRM 使われてる！
 
